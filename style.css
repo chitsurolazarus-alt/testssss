@@ -661,7 +661,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .transformations-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 40px;
     margin-bottom: 50px;
 }
@@ -676,7 +676,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .transformation-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     box-shadow: var(--shadow-hover);
 }
 
@@ -711,6 +711,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
+    z-index: 2;
 }
 
 .before-img .label {
@@ -1120,6 +1121,79 @@ h1, h2, h3, h4, h5, h6 {
     margin: 15px 0;
 }
 
+.product-description p, .product-benefits p, .product-how-to p {
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.product-benefits h4, .product-how-to h4 {
+    color: var(--primary-pink);
+    margin: 15px 0 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.recommended-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid var(--soft-pink);
+}
+
+.recommended-section h4 {
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.recommended-grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.recommend-item {
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.recommend-item:hover {
+    transform: translateY(-5px);
+}
+
+.recommend-img {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    margin: 0 auto;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.recommend-item:hover .recommend-img {
+    box-shadow: var(--shadow-hover);
+}
+
+.recommend-item p {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.recommend-item small {
+    color: var(--primary-pink);
+    font-weight: 600;
+}
+
+.add-to-cart-modal {
+    width: 100%;
+    margin-top: 20px;
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
@@ -1221,6 +1295,10 @@ h1, h2, h3, h4, h5, h6 {
         right: -100%;
     }
     
+    .transformations-gallery {
+        grid-template-columns: 1fr;
+    }
+    
     .modal-content {
         padding: 20px;
     }
@@ -1236,10 +1314,6 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 480px) {
     .products-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .transformations-gallery {
         grid-template-columns: 1fr;
     }
     
