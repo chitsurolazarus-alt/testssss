@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>My Dashboard - Bono BeautySkin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .dashboard-container {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffe4ec 0%, #ffffff 100%);
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(135deg, #ff69b4, #db7093);
+            color: white;
+            padding: 40px;
+            border-radius: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .dashboard-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+        }
+        
+        .stat-card i {
+            font-size: 3rem;
+            color: #ff69b4;
+            margin-bottom: 15px;
+        }
+        
+        .stat-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .stat-card p {
+            color: #6c757d;
+        }
+        
+        .orders-section {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .orders-section h2 {
+            margin-bottom: 20px;
+            color: #ff69b4;
+        }
+        
+        .order-card {
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .order-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .order-id {
+            font-weight: bold;
+            color: #ff69b4;
+        }
+        
+        .order-date {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .order-items {
+            margin-top: 15px;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .order-total {
+            margin-top: 15px;
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #ff69b4;
+        }
+        
+        .empty-orders {
+            text-align: center;
+            padding: 60px;
+            color: #6c757d;
+        }
+        
+        .empty-orders i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #ffb6c1;
+        }
+        
+        .profile-section {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .profile-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .info-item label {
+            font-weight: 600;
+            color: #ff69b4;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .info-item p {
+            font-size: 1.1rem;
+            color: #2d2d2d;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: #ff69b4;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-back:hover {
+            background: #db7093;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-icon">🌸</div>
+                    <div class="logo-text">
+                        <h1>Bono<span>BeautySkin</span></h1>
+                        <p class="slogan">Your skin my passion</p>
+                    </div>
+                </div>
+                
+                <div class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="index.html#products"><i class="fas fa-shopping-bag"></i> Products</a></li>
+                    <li><a href="index.html#before-after"><i class="fas fa-images"></i> Transformations</a></li>
+                    <li><a href="index.html#about"><i class="fas fa-star"></i> About Us</a></li>
+                    <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+                
+                <div class="user-controls">
+                    <div class="user-icon" id="userIcon">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userNameDisplay">Account</span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Welcome, <span id="userName"></span>!</h1>
+                <p>Manage your account and view your order history</p>
+            </div>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h3 id="totalOrders">0</h3>
+                    <p>Total Orders</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3 id="memberSince">-</h3>
+                    <p>Member Since</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>VIP Member</h3>
+                    <p>Exclusive Benefits</p>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h2 style="color: #ff69b4; margin-bottom: 20px;">Profile Information</h2>
+                <div class="profile-info">
+                    <div class="info-item">
+                        <label>Full Name</label>
+                        <p id="profileName">-</p>
+                    </div>
+                    <div class="info-item">
+                        <label>Email Address</label>
+                        <p id="profileEmail">-</p>
+                    </div>
+                    <div class="info-item">
+                        <label>Phone Number</label>
+                        <p id="profilePhone">-</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="orders-section">
+                <h2>Order History</h2>
+                <div id="ordersList"></div>
+            </div>
+            
+            <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Shop</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <div class="logo-icon">🌸</div>
+                        <div class="logo-text">
+                            <h2>Bono<span>BeautySkin</span></h2>
+                            <p class="slogan">Your skin my passion</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">Premium beauty essentials crafted with passion and expertise.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="index.html#before-after">Transformations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="business-hours">
+                        <li>WhatsApp: 066 252 3100</li>
+                        <li>Email: magodabono2@gmail.com</li>
+                        <li>Instagram: @bonobeautyskin_</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Bono BeautySkin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script>
+        // Dashboard specific code
+        function loadDashboard() {
+            const currentUser = auth.getCurrentUser();
+            
+            if (!currentUser) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // Set user info
+            document.getElementById('userName').textContent = currentUser.name;
+            document.getElementById('profileName').textContent = currentUser.name;
+            document.getElementById('profileEmail').textContent = currentUser.email;
+            document.getElementById('profilePhone').textContent = currentUser.phone;
+            document.getElementById('userNameDisplay').textContent = currentUser.name.split(' ')[0];
+            
+            // Get user data
+            const userData = auth.users.find(u => u.id === currentUser.id);
+            
+            if (userData) {
+                const joinDate = new Date(userData.createdAt);
+                document.getElementById('memberSince').textContent = joinDate.toLocaleDateString('en-ZA');
+                document.getElementById('totalOrders').textContent = userData.orders.length;
+                
+                // Display orders
+                const ordersList = document.getElementById('ordersList');
+                if (userData.orders.length === 0) {
+                    ordersList.innerHTML = `
+                        <div class="empty-orders">
+                            <i class="fas fa-shopping-bag"></i>
+                            <p>No orders yet!</p>
+                            <p>Start shopping to see your order history here.</p>
+                        </div>
+                    `;
+                } else {
+                    ordersList.innerHTML = userData.orders.reverse().map(order => `
+                        <div class="order-card">
+                            <div class="order-header">
+                                <span class="order-id">${order.orderId}</span>
+                                <span class="order-date">${new Date(order.orderDate).toLocaleDateString('en-ZA')}</span>
+                            </div>
+                            <div class="order-items">
+                                ${order.items.map(item => `
+                                    <div class="order-item">
+                                        <span>${item.name} × ${item.quantity}</span>
+                                        <span>R${item.price * item.quantity}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="order-total">
+                                Total: R${order.total}
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadDashboard);
+    </script>
+</body>
+</html>
